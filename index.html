@@ -71,6 +71,17 @@ h2:first-child{margin-top:4px}
 .badge{display:inline-block;margin-top:9px;font-size:11px;font-weight:800;letter-spacing:1px;padding:5px 9px;border-radius:99px;background:var(--teal);color:#04263b}
 .badge.soon{background:rgba(255,255,255,.18);color:var(--pearl)}
 .a1{background:linear-gradient(120deg,#12275e,#8a5a12)} .a2{background:linear-gradient(120deg,#5e1240,#c2497d)} .a3{background:linear-gradient(120deg,#7a1f1f,#e08a2e)} .a4{background:linear-gradient(120deg,#0d3a5c,#7fd4e8)} .a5{background:linear-gradient(120deg,#7a5a10,#f2c94c)} .a6{background:linear-gradient(120deg,#3a1050,#b06ab3)}
+.prime{margin-top:16px;background:linear-gradient(120deg,#3a1050,#8a5a12);border:1px solid rgba(243,210,122,.6);border-radius:16px;padding:15px 16px;box-shadow:0 0 26px rgba(243,210,122,.2)}
+.prime .k{font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:900}
+.prime .t{font-size:19px;font-weight:900;margin:3px 0}
+.prime .s{font-size:13.5px;color:#ffeec2}
+.prime button{margin-top:10px;padding:11px 16px;border:0;border-radius:10px;background:linear-gradient(90deg,#2f7fe0,#39c2d7);color:#fff;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit}
+.fchips{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.fchips::-webkit-scrollbar{display:none}
+.fchip{flex:0 0 auto;padding:9px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);color:var(--pearl);font-weight:800;font-size:13px;cursor:pointer;font-family:inherit}
+.fchip.on{background:linear-gradient(90deg,#2f7fe0,#39c2d7);border-color:transparent}
+.star{float:right;background:none;border:0;font-size:19px;cursor:pointer;color:rgba(255,255,255,.45);padding:0}
+.star.on{color:var(--gold)}
 .vaultbox{background:linear-gradient(120deg,#123a7a,#0e5f74);border:1px solid rgba(243,210,122,.55);border-radius:18px;padding:20px;text-align:center;box-shadow:0 0 30px rgba(57,194,215,.22)}
 .vaultbox h2{margin:0 0 8px;font-size:23px}
 .vaultbox p{color:#e6f3ff;font-size:14.5px;line-height:1.55}
@@ -113,6 +124,8 @@ footer a{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size
     <div class="nowsub" id="nowSub"></div>
     <div class="bar"><i id="prog"></i></div>
     <div class="nextline" id="nextLine"></div>
+    <div class="prime"><div class="k">🌙 TONIGHT · PRIME TIME 8 PM ET</div><div class="t" id="primeTitle"></div><div class="s" id="primeSub"></div><button id="primeBtn">▶ Watch Prime Time</button></div>
+    <div id="myListWrap" style="display:none"><h2>⭐ My List</h2><div class="chips" id="myList"></div></div>
 
     <h2>🎙️ AI After 40 — Pick an Episode</h2>
     <div class="chips" id="epsAI"></div>
@@ -121,17 +134,25 @@ footer a{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size
   </section>
 
   <section class="screen" id="s-shows">
+    <div class="fchips" id="filters">
+      <button class="fchip on" data-f="all">All Shows</button>
+      <button class="fchip" data-f="talk">🎙️ Talk &amp; Learn</button>
+      <button class="fchip" data-f="anim">🎬 Animation</button>
+      <button class="fchip" data-f="kids">🌼 Kids &amp; Family</button>
+      <button class="fchip" data-f="soon">🔜 Coming Soon</button>
+      <button class="fchip" data-f="stations">📡 Her Stations</button>
+    </div>
     <div class="grid">
-      <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/ai-after-40.html" target="_blank" rel="noopener"><div class="art a1">🎙️</div><div class="body"><h3>AI After 40</h3><p>Renee &amp; Marcus make AI simple for life and business after 40 — a new lesson every day.</p><span class="badge">SHOW PAGE</span></div></a>
-      <a class="card" href="https://nakeymasi-coder.github.io/the-prompt-breakdown/" target="_blank" rel="noopener"><div class="art a2">💡</div><div class="body"><h3>The Prompt Breakdown</h3><p>Simone &amp; Desi break real prompts down step by step, so you can use them the same day.</p><span class="badge">SHOW PAGE</span></div></a>
-      <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/fruit-bowl-secrets.html" target="_blank" rel="noopener"><div class="art a3">🍓</div><div class="body"><h3>Fruit Bowl Secrets</h3><p>Pippa, Berry &amp; Gigi — the little kitchen crew with big secrets and bigger lessons.</p><span class="badge">SHOW PAGE</span></div></a>
-      <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/crystal-heart.html" target="_blank" rel="noopener"><div class="art a4">💎</div><div class="body"><h3>The Crystal Heart</h3><p>Scarlett &amp; Rune — a snowy adventure about a brave heart and the friend who guards it.</p><span class="badge">SHOW PAGE</span></div></a>
-      <a class="card" href="https://www.youtube.com/watch?v=CybdY8nrb8E" target="_blank" rel="noopener"><div class="art a5">🌼</div><div class="body"><h3>Zuri &amp; Biscuit</h3><p>Animated read-along stories for little readers, from Big Dreams Little Readers.</p><span class="badge">EPISODE 1</span></div></a>
-      <div class="card"><div class="art a6">👑</div><div class="body"><h3>Ruby &amp; Pearl</h3><p>Two sisters, one crown, and learning never to shrink. The premiere is coming.</p><span class="badge soon">COMING SOON</span></div></div>
-      <div class="card"><div class="art a2">🎬</div><div class="body"><h3>Second Act Studio</h3><p>Four friends in their 40s quit draining jobs and build a content studio of their own.</p><span class="badge soon">COMING SOON</span></div></div>
-      <div class="card"><div class="art a4">🎄</div><div class="body"><h3>A Glam Carol</h3><p>Glam's holiday special — sparkle, heart, and a lesson in every light.</p><span class="badge soon">COMING SOON</span></div></div>
-      <a class="card" href="https://nakeymasi-coder.github.io/glam-radio/" target="_blank" rel="noopener"><div class="art a2">📻</div><div class="body"><h3>Glam Radio</h3><p>Her own radio station — podcasts on the air 24/7, plus a studio booth to record in.</p><span class="badge">LISTEN + RECORD</span></div></a>
-      <a class="card" href="https://nakeymasi-coder.github.io/glam-movie-studio/" target="_blank" rel="noopener"><div class="art a1">🎬</div><div class="body"><h3>Glam Movie Studio</h3><p>Where the shows get made — treatment to premiere, with her Film Crew doing the filming.</p><span class="badge">ENTER THE STUDIO</span></div></a>
+      <a class="card" data-cat="talk" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/ai-after-40.html" target="_blank" rel="noopener"><div class="art a1">🎙️</div><div class="body"><h3>AI After 40</h3><p>Renee &amp; Marcus make AI simple for life and business after 40 — a new lesson every day.</p><span class="badge">SHOW PAGE</span></div></a>
+      <a class="card" data-cat="talk" href="https://nakeymasi-coder.github.io/the-prompt-breakdown/" target="_blank" rel="noopener"><div class="art a2">💡</div><div class="body"><h3>The Prompt Breakdown</h3><p>Simone &amp; Desi break real prompts down step by step, so you can use them the same day.</p><span class="badge">SHOW PAGE</span></div></a>
+      <a class="card" data-cat="anim" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/fruit-bowl-secrets.html" target="_blank" rel="noopener"><div class="art a3">🍓</div><div class="body"><h3>Fruit Bowl Secrets</h3><p>Pippa, Berry &amp; Gigi — the little kitchen crew with big secrets and bigger lessons.</p><span class="badge">SHOW PAGE</span></div></a>
+      <a class="card" data-cat="anim" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/crystal-heart.html" target="_blank" rel="noopener"><div class="art a4">💎</div><div class="body"><h3>The Crystal Heart</h3><p>Scarlett &amp; Rune — a snowy adventure about a brave heart and the friend who guards it.</p><span class="badge">SHOW PAGE</span></div></a>
+      <a class="card" data-cat="kids" href="https://www.youtube.com/watch?v=CybdY8nrb8E" target="_blank" rel="noopener"><div class="art a5">🌼</div><div class="body"><h3>Zuri &amp; Biscuit</h3><p>Animated read-along stories for little readers, from Big Dreams Little Readers.</p><span class="badge">EPISODE 1</span></div></a>
+      <div class="card" data-cat="soon"><div class="art a6">👑</div><div class="body"><h3>Ruby &amp; Pearl</h3><p>Two sisters, one crown, and learning never to shrink. The premiere is coming.</p><span class="badge soon">COMING SOON</span></div></div>
+      <div class="card" data-cat="soon"><div class="art a2">🎬</div><div class="body"><h3>Second Act Studio</h3><p>Four friends in their 40s quit draining jobs and build a content studio of their own.</p><span class="badge soon">COMING SOON</span></div></div>
+      <div class="card" data-cat="soon"><div class="art a4">🎄</div><div class="body"><h3>A Glam Carol</h3><p>Glam's holiday special — sparkle, heart, and a lesson in every light.</p><span class="badge soon">COMING SOON</span></div></div>
+      <a class="card" data-cat="stations" href="https://nakeymasi-coder.github.io/glam-radio/" target="_blank" rel="noopener"><div class="art a2">📻</div><div class="body"><h3>Glam Radio</h3><p>Her own radio station — podcasts on the air 24/7, plus a studio booth to record in.</p><span class="badge">LISTEN + RECORD</span></div></a>
+      <a class="card" data-cat="stations" href="https://nakeymasi-coder.github.io/glam-movie-studio/" target="_blank" rel="noopener"><div class="art a1">🎬</div><div class="body"><h3>Glam Movie Studio</h3><p>Where the shows get made — treatment to premiere, with her Film Crew doing the filming.</p><span class="badge">ENTER THE STUDIO</span></div></a>
     </div>
   </section>
 
@@ -235,6 +256,39 @@ function showScreen(name){
  document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('on',s.id==='s-'+name);});
 }
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){showScreen(b.dataset.s);};});
+/* v3: PRIME TIME */
+var prime=SCHEDULE[8];
+document.getElementById('primeTitle').textContent=prime.show;
+document.getElementById('primeSub').textContent=prime.ep+' · Every night at 8 PM ET';
+document.getElementById('primeBtn').onclick=function(){playSchedule(8);};
+/* v3: SHOW FILTERS */
+document.querySelectorAll('#filters .fchip').forEach(function(b){
+ b.onclick=function(){
+  document.querySelectorAll('#filters .fchip').forEach(function(x){x.classList.remove('on');});
+  b.classList.add('on');
+  var f=b.dataset.f;
+  document.querySelectorAll('#s-shows .card').forEach(function(c){c.style.display=(f==='all'||c.dataset.cat===f)?'block':'none';});
+ };
+});
+/* v3: MY LIST (saved on this device) */
+var MYKEY='glamtv_mylist';
+function myListGet(){try{return JSON.parse(localStorage.getItem(MYKEY)||'[]');}catch(e){return[];}}
+function myListSave(l){try{localStorage.setItem(MYKEY,JSON.stringify(l));}catch(e){}}
+function renderMyList(){
+ var l=myListGet(),wrap=document.getElementById('myListWrap'),box=document.getElementById('myList');
+ box.innerHTML='';wrap.style.display=l.length?'block':'none';
+ l.forEach(function(e){var b=document.createElement('button');b.className='chip';b.innerHTML='⭐ '+e.t+'<small>'+e.s+'</small>';b.onclick=function(){playEp(e,null);};box.appendChild(b);});
+ document.querySelectorAll('.star').forEach(function(st){var id=st.dataset.id;st.classList.toggle('on',l.some(function(e){return e.id===id;}));});
+}
+function addStars(list,boxId){
+ var box=document.getElementById(boxId);
+ list.forEach(function(e,i){
+  var st=document.createElement('button');st.className='star';st.dataset.id=e.id;st.textContent='★';st.title='Save to My List';
+  st.onclick=function(ev){ev.stopPropagation();var l=myListGet();var has=l.some(function(x){return x.id===e.id;});l=has?l.filter(function(x){return x.id!==e.id;}):l.concat([e]);myListSave(l);renderMyList();};
+  box.children[i].appendChild(st);
+ });
+}
+addStars(EPS_AI,'epsAI'); addStars(EPS_KIDS,'epsKids'); renderMyList();
 function tick(){document.getElementById('clock').textContent=etClock()+' ET';}
 tick(); playSchedule(currentIdx());
 setInterval(function(){tick();},30000);
