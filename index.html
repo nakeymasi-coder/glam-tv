@@ -11,108 +11,150 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--sapphire:#10509c;--deep:#0a1a40;--teal:#39c2d7;--pearl:#fafaff;--chrome:#cfd8e6;--pink:#7db8ff}
-body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,#071233,#0a1a40 40%,#0d2a5c);color:var(--pearl);min-height:100vh;padding-bottom:110px}
-header{padding:20px 18px 6px;text-align:center}
-.logo{font-size:15px;letter-spacing:3px;color:var(--teal);font-weight:700}
-h1{font-size:44px;line-height:1;background:linear-gradient(90deg,#fff,#9fd8ff,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
-.tag{margin-top:6px;color:var(--chrome);font-size:15px}
-.livebar{max-width:760px;margin:16px auto 0;padding:0 14px}
+:root{--deep:#0a1a40;--teal:#39c2d7;--pearl:#fafaff;--chrome:#cfd8e6;--gold:#f3d27a}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--pearl);min-height:100vh;padding-bottom:118px;background:radial-gradient(1200px 500px at 50% -80px,#1d4e89,#0a1a40 55%,#071233);overflow-x:hidden}
+.sparkle{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(2px 2px at 12% 22%,#fff,transparent),radial-gradient(1.5px 1.5px at 82% 12%,#ffe9a8,transparent),radial-gradient(2px 2px at 64% 34%,#fff,transparent),radial-gradient(1.5px 1.5px at 28% 58%,#bfe9ff,transparent),radial-gradient(2px 2px at 90% 66%,#fff,transparent),radial-gradient(1.5px 1.5px at 8% 84%,#ffe9a8,transparent);animation:tw 3.2s ease-in-out infinite alternate}
+@keyframes tw{from{opacity:.45}to{opacity:1}}
+.fly{position:fixed;font-size:22px;z-index:0;pointer-events:none;animation:float 9s ease-in-out infinite;opacity:.85}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+main{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:0 14px}
+.hero{margin-top:14px;border-radius:20px;overflow:hidden;border:2px solid rgba(243,210,122,.55);box-shadow:0 18px 50px rgba(0,0,0,.55),0 0 34px rgba(57,194,215,.25);display:flex;background:linear-gradient(100deg,#081638 30%,rgba(8,22,56,.55) 62%,rgba(8,22,56,.05));min-height:230px}
+.hero-text{padding:20px 18px;flex:1}
+.kicker{font-size:12px;letter-spacing:3px;color:var(--gold);font-weight:800}
+h1{font-size:52px;line-height:.98;font-weight:900;background:linear-gradient(92deg,#fff 10%,#9fd8ff 45%,var(--gold) 75%,#fff);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+.onair{display:inline-flex;align-items:center;gap:7px;margin-top:10px;background:#c2102e;color:#fff;font-weight:900;letter-spacing:2px;font-size:12px;padding:6px 11px;border-radius:8px;box-shadow:0 0 18px rgba(255,40,80,.65)}
+.onair i{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.3}}
+.hero p{margin-top:10px;color:#e8f2ff;font-size:14.5px;line-height:1.5;max-width:340px}
+.hero p b{color:#fff}
+.hostline{margin-top:8px;font-size:12.5px;color:var(--gold)}
+.hero-img{width:44%;object-fit:cover;object-position:top center;mask-image:linear-gradient(90deg,transparent,#000 26%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 26%)}
+@media(max-width:560px){h1{font-size:40px}.hero-img{width:46%}.hero p{font-size:13px}}
+.tabs{display:flex;gap:8px;margin:16px 0 4px;position:sticky;top:8px;z-index:5}
+.tabs button{flex:1;padding:12px 4px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(10,26,64,.92);color:var(--pearl);font-weight:800;font-size:14px;cursor:pointer;font-family:inherit}
+.tabs button.on{background:linear-gradient(90deg,#2f7fe0,#39c2d7);border-color:transparent;box-shadow:0 6px 20px rgba(57,194,215,.4)}
+.screen{display:none;padding-top:12px}
+.screen.on{display:block}
 .livehead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.dot{width:11px;height:11px;border-radius:50%;background:#ff3b5c;box-shadow:0 0 10px #ff3b5c;animation:pulse 1.6s infinite}
-@keyframes pulse{50%{opacity:.4}}
+.dot{width:11px;height:11px;border-radius:50%;background:#ff3b5c;box-shadow:0 0 12px #ff3b5c;animation:pulse 1.6s infinite}
 .livehead b{letter-spacing:2px;font-size:14px}
 .livehead span{color:var(--chrome);font-size:13px;margin-left:auto}
-.player{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;border:2px solid rgba(159,216,255,.45);box-shadow:0 12px 40px rgba(0,0,0,.5);background:#000}
+.player{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;border:2px solid rgba(243,210,122,.5);box-shadow:0 14px 44px rgba(0,0,0,.55),0 0 26px rgba(243,210,122,.18);background:#000}
 .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.nowtitle{margin-top:10px;font-size:19px;font-weight:800}
-.nowsub{color:var(--chrome);font-size:14px;margin-top:2px}
-.nextline{margin-top:6px;font-size:13px;color:var(--teal)}
-section{max-width:760px;margin:26px auto 0;padding:0 14px}
-h2{font-size:20px;margin-bottom:10px}
-.guide{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
-.guide::-webkit-scrollbar{display:none}
-.slot{flex:0 0 auto;width:158px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:10px;text-align:left;color:var(--pearl);cursor:pointer;font-family:inherit}
-.slot.on{border-color:var(--teal);background:rgba(57,194,215,.16)}
-.slot .t{font-size:12px;color:var(--teal);font-weight:700}
-.slot .s{font-size:14px;font-weight:800;margin:3px 0}
-.slot .e{font-size:12px;color:var(--chrome);line-height:1.35}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nowtitle{margin-top:12px;font-size:21px;font-weight:900}
+.nowsub{color:var(--chrome);font-size:14.5px;margin-top:2px}
+.bar{height:8px;background:rgba(255,255,255,.14);border-radius:99px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#2f7fe0,var(--teal),var(--gold));border-radius:99px;transition:width 1s}
+.nextline{margin-top:7px;font-size:13.5px;color:var(--teal)}
+h2{font-size:20px;margin:20px 0 10px}
+h2:first-child{margin-top:4px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:10px 13px;border-radius:99px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);color:var(--pearl);font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;text-align:left}
+.chip small{display:block;font-weight:600;color:var(--chrome);font-size:11.5px}
+.chip.on{border-color:var(--gold);background:rgba(243,210,122,.16)}
+.guide{display:flex;flex-direction:column;gap:8px}
+.slot{display:flex;gap:12px;align-items:center;width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:12px;padding:11px 12px;text-align:left;color:var(--pearl);cursor:pointer;font-family:inherit}
+.slot.on{border-color:var(--teal);background:rgba(57,194,215,.15)}
+.slot .t{flex:0 0 108px;font-size:12px;color:var(--teal);font-weight:800;line-height:1.4}
+.slot .s{font-size:15px;font-weight:800}
+.slot .e{font-size:12.5px;color:var(--chrome)}
+.slot .air{margin-left:auto;flex:0 0 auto;font-size:10.5px;font-weight:900;letter-spacing:1px;color:#ff5c7a}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
-.card{display:block;text-decoration:none;color:var(--pearl);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px}
-.card .em{font-size:26px}
-.card h3{font-size:17px;margin:6px 0 4px}
+.card{display:block;text-decoration:none;color:var(--pearl);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05)}
+.card .art{height:86px;display:flex;align-items:center;justify-content:center;font-size:42px}
+.card .body{padding:12px 13px 14px}
+.card h3{font-size:17px;margin-bottom:4px}
 .card p{font-size:13px;color:var(--chrome);line-height:1.45}
-.badge{display:inline-block;margin-top:8px;font-size:11px;font-weight:800;letter-spacing:1px;padding:4px 8px;border-radius:99px;background:var(--teal);color:#04263b}
+.badge{display:inline-block;margin-top:9px;font-size:11px;font-weight:800;letter-spacing:1px;padding:5px 9px;border-radius:99px;background:var(--teal);color:#04263b}
 .badge.soon{background:rgba(255,255,255,.18);color:var(--pearl)}
-.vault{max-width:760px;margin:28px auto 0;padding:0 14px}
-.vaultbox{background:linear-gradient(120deg,#123a7a,#0e5f74);border:1px solid rgba(159,216,255,.5);border-radius:16px;padding:18px;text-align:center}
-.vaultbox h2{margin-bottom:6px}
-.vaultbox p{color:#e6f3ff;font-size:14px;line-height:1.5}
-footer{position:fixed;left:0;right:0;bottom:0;background:rgba(7,18,51,.96);border-top:1px solid rgba(255,255,255,.15);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;z-index:9}
+.a1{background:linear-gradient(120deg,#12275e,#8a5a12)} .a2{background:linear-gradient(120deg,#5e1240,#c2497d)} .a3{background:linear-gradient(120deg,#7a1f1f,#e08a2e)} .a4{background:linear-gradient(120deg,#0d3a5c,#7fd4e8)} .a5{background:linear-gradient(120deg,#7a5a10,#f2c94c)} .a6{background:linear-gradient(120deg,#3a1050,#b06ab3)}
+.vaultbox{background:linear-gradient(120deg,#123a7a,#0e5f74);border:1px solid rgba(243,210,122,.55);border-radius:18px;padding:20px;text-align:center;box-shadow:0 0 30px rgba(57,194,215,.22)}
+.vaultbox h2{margin:0 0 8px;font-size:23px}
+.vaultbox p{color:#e6f3ff;font-size:14.5px;line-height:1.55}
+.vaultbox ul{list-style:none;margin:13px auto 4px;text-align:left;max-width:400px}
+.vaultbox li{padding:6px 0;font-size:14.5px;border-bottom:1px dashed rgba(255,255,255,.18)}
+footer{position:fixed;left:0;right:0;bottom:0;background:rgba(7,18,51,.97);border-top:1px solid rgba(243,210,122,.35);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;z-index:9}
 footer a{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size:15px;padding:13px 8px;border-radius:12px}
 .join{background:linear-gradient(90deg,#2f7fe0,#39c2d7);color:#fff}
 .shop{background:rgba(255,255,255,.1);color:var(--pearl);border:1px solid rgba(255,255,255,.25)}
-.credit{text-align:center;color:rgba(255,255,255,.45);font-size:12px;margin-top:22px}
+.credit{text-align:center;color:rgba(255,255,255,.45);font-size:12px;margin-top:24px}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">GLAM HUSTLE HUB PRESENTS</div>
-  <h1>📺 Glam TV</h1>
-  <p class="tag">Her own station. Her shows, scheduled like a real network — playing 24/7.</p>
-</header>
-
-<div class="livebar">
-  <div class="livehead"><div class="dot"></div><b>LIVE NOW</b><span id="clock"></span></div>
-  <div class="player"><iframe id="player" title="Glam TV Live" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-  <div class="nowtitle" id="nowTitle"></div>
-  <div class="nowsub" id="nowSub"></div>
-  <div class="nextline" id="nextLine"></div>
-</div>
-
-<section>
-  <h2>📅 Today's Lineup</h2>
-  <div class="guide" id="guide"></div>
-  <p style="font-size:12px;color:rgba(255,255,255,.5);margin-top:4px">Tap any time slot to watch that show right here. Times are Eastern.</p>
-</section>
-
-<section>
-  <h2>🎬 The Shows</h2>
-  <div class="grid">
-    <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/ai-after-40.html" target="_blank" rel="noopener">
-      <div class="em">🎙️</div><h3>AI After 40</h3>
-      <p>Renee &amp; Marcus make AI simple for life and business after 40 — a new lesson every day.</p>
-      <span class="badge">WATCH THE SHOW PAGE</span></a>
-    <a class="card" href="https://nakeymasi-coder.github.io/the-prompt-breakdown/" target="_blank" rel="noopener">
-      <div class="em">💡</div><h3>The Prompt Breakdown</h3>
-      <p>Simone &amp; Desi break real prompts down step by step, so you can use them the same day.</p>
-      <span class="badge">WATCH THE SHOW PAGE</span></a>
-    <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/fruit-bowl-secrets.html" target="_blank" rel="noopener">
-      <div class="em">🍓</div><h3>Fruit Bowl Secrets</h3>
-      <p>Pippa, Berry &amp; Gigi — the little kitchen crew with big secrets and bigger lessons.</p>
-      <span class="badge">WATCH THE SHOW PAGE</span></a>
-    <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/crystal-heart.html" target="_blank" rel="noopener">
-      <div class="em">💎</div><h3>The Crystal Heart</h3>
-      <p>Scarlett &amp; Rune — a snowy adventure about a brave heart and the friend who guards it.</p>
-      <span class="badge">WATCH THE SHOW PAGE</span></a>
-    <a class="card" href="https://www.youtube.com/watch?v=CybdY8nrb8E" target="_blank" rel="noopener">
-      <div class="em">🌼</div><h3>Zuri &amp; Biscuit</h3>
-      <p>Animated read-along stories for little readers, from Big Dreams Little Readers.</p>
-      <span class="badge">WATCH EPISODE 1</span></a>
-    <div class="card">
-      <div class="em">👑</div><h3>Ruby &amp; Pearl</h3>
-      <p>A coming-of-age story about two sisters, one crown, and learning never to shrink.</p>
-      <span class="badge soon">COMING SOON</span></div>
+<div class="sparkle"></div>
+<div class="fly" style="top:120px;left:4%">🦋</div>
+<div class="fly" style="top:420px;right:4%;animation-delay:-4s">🦋</div>
+<main>
+  <div class="hero">
+    <div class="hero-text">
+      <div class="kicker">GLAM HUSTLE HUB PRESENTS</div>
+      <h1>Glam TV</h1>
+      <span class="onair"><i></i>ON AIR · 24/7</span>
+      <p>Her own station. <b>Her shows, her schedule, her audience</b> — no middleman, no split.</p>
+      <div class="hostline">✨ Starring Renee — host of AI After 40</div>
+    </div>
+    <img class="hero-img" src="header-renee.webp" alt="Renee, host of AI After 40">
   </div>
-</section>
 
-<div class="vault"><div class="vaultbox">
-  <h2>✨ Want everything?</h2>
-  <p>Every generator, course, live class and replay lives inside The Glam Vault — Glam TV is just the front door. Come on in.</p>
-</div></div>
+  <nav class="tabs">
+    <button class="on" data-s="watch">📺 Watch</button>
+    <button data-s="shows">🎬 Shows</button>
+    <button data-s="guide">📅 Guide</button>
+    <button data-s="vault">✨ Vault</button>
+  </nav>
 
-<p class="credit">Glam TV · A Glam Hustle Hub station · New shows added as they premiere</p>
+  <section class="screen on" id="s-watch">
+    <div class="livehead"><div class="dot"></div><b>LIVE NOW</b><span id="clock"></span></div>
+    <div class="player"><iframe id="player" title="Glam TV" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <div class="nowtitle" id="nowTitle"></div>
+    <div class="nowsub" id="nowSub"></div>
+    <div class="bar"><i id="prog"></i></div>
+    <div class="nextline" id="nextLine"></div>
+
+    <h2>🎙️ AI After 40 — Pick an Episode</h2>
+    <div class="chips" id="epsAI"></div>
+    <h2>🍓 Fruit Bowl + Story Time</h2>
+    <div class="chips" id="epsKids"></div>
+  </section>
+
+  <section class="screen" id="s-shows">
+    <div class="grid">
+      <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/ai-after-40.html" target="_blank" rel="noopener"><div class="art a1">🎙️</div><div class="body"><h3>AI After 40</h3><p>Renee &amp; Marcus make AI simple for life and business after 40 — a new lesson every day.</p><span class="badge">SHOW PAGE</span></div></a>
+      <a class="card" href="https://nakeymasi-coder.github.io/the-prompt-breakdown/" target="_blank" rel="noopener"><div class="art a2">💡</div><div class="body"><h3>The Prompt Breakdown</h3><p>Simone &amp; Desi break real prompts down step by step, so you can use them the same day.</p><span class="badge">SHOW PAGE</span></div></a>
+      <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/fruit-bowl-secrets.html" target="_blank" rel="noopener"><div class="art a3">🍓</div><div class="body"><h3>Fruit Bowl Secrets</h3><p>Pippa, Berry &amp; Gigi — the little kitchen crew with big secrets and bigger lessons.</p><span class="badge">SHOW PAGE</span></div></a>
+      <a class="card" href="https://nakeymasi-coder.github.io/GLAM-HUSTLE-HUB/crystal-heart.html" target="_blank" rel="noopener"><div class="art a4">💎</div><div class="body"><h3>The Crystal Heart</h3><p>Scarlett &amp; Rune — a snowy adventure about a brave heart and the friend who guards it.</p><span class="badge">SHOW PAGE</span></div></a>
+      <a class="card" href="https://www.youtube.com/watch?v=CybdY8nrb8E" target="_blank" rel="noopener"><div class="art a5">🌼</div><div class="body"><h3>Zuri &amp; Biscuit</h3><p>Animated read-along stories for little readers, from Big Dreams Little Readers.</p><span class="badge">EPISODE 1</span></div></a>
+      <div class="card"><div class="art a6">👑</div><div class="body"><h3>Ruby &amp; Pearl</h3><p>Two sisters, one crown, and learning never to shrink. The premiere is coming.</p><span class="badge soon">COMING SOON</span></div></div>
+      <div class="card"><div class="art a2">🎬</div><div class="body"><h3>Second Act Studio</h3><p>Four friends in their 40s quit draining jobs and build a content studio of their own.</p><span class="badge soon">COMING SOON</span></div></div>
+      <div class="card"><div class="art a4">🎄</div><div class="body"><h3>A Glam Carol</h3><p>Glam's holiday special — sparkle, heart, and a lesson in every light.</p><span class="badge soon">COMING SOON</span></div></div>
+    </div>
+  </section>
+
+  <section class="screen" id="s-guide">
+    <h2>📅 Today's Lineup — Eastern</h2>
+    <div class="guide" id="guide"></div>
+    <p style="font-size:12.5px;color:rgba(255,255,255,.5);margin-top:10px">Tap any slot to watch it right here on the Watch screen.</p>
+  </section>
+
+  <section class="screen" id="s-vault">
+    <div class="vaultbox">
+      <h2>✨ The Glam Vault</h2>
+      <p>Glam TV is the front door. The Vault is the whole house — every tool, course and live class Glam teaches, in one membership.</p>
+      <ul>
+        <li>🦋 40+ prompt generators that run your content for you</li>
+        <li>🎓 Full courses + live classes with Glam</li>
+        <li>📺 Every show's study companions and replays</li>
+        <li>💬 A community of women 40+ building right alongside you</li>
+      </ul>
+      <p style="margin-top:12px">Tap <b>Join The Glam Vault</b> below and come on in.</p>
+    </div>
+  </section>
+
+  <p class="credit">Glam TV · A Glam Hustle Hub station · Forget the middleman — this one is hers</p>
+</main>
 
 <footer>
   <a class="join" href="https://glamhustlehub.com/products/the-glam-vault" target="_blank" rel="noopener">✨ Join The Glam Vault</a>
@@ -132,31 +174,68 @@ var SCHEDULE=[
  {start:20, show:"Prime Time Encore", ep:"AI After 40 — Ep. 3: Your First AI Art Project", id:"cVgxNBufvPg"},
  {start:22, show:"Late Night Replay", ep:"AI After 40 — Ep. 2: Prompt Like a Pro", id:"fK5YmY0yA6Q"}
 ];
-function etHour(){var s=new Date().toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis',hour:'numeric',hour12:false});var h=parseInt(s,10);return isNaN(h)?12:h%24;}
+var EPS_AI=[
+ {t:"Ep. 1", s:"It's Your Turn Now", id:"lHKAOoGH_4I"},
+ {t:"Ep. 2", s:"Prompt Like a Pro", id:"fK5YmY0yA6Q"},
+ {t:"Ep. 3", s:"Your First AI Art Project", id:"cVgxNBufvPg"},
+ {t:"Ep. 4", s:"Episode 4", id:"PHCxBRm5ZPg"}
+];
+var EPS_KIDS=[
+ {t:"Fruit Bowl Ep. 3", s:"Heard It Through the Grapevine", id:"b14z33_GgeU"},
+ {t:"Fruit Bowl Ep. 4", s:"The Grape Divide (Cliffhanger!)", id:"9Xwf5jpFMSE"},
+ {t:"Zuri & Biscuit Ep. 1", s:"The Flower Route", id:"CybdY8nrb8E"}
+];
+function etNow(){return new Date(new Date().toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));}
+function etHour(){return etNow().getHours();}
 function etClock(){return new Date().toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis',weekday:'short',hour:'numeric',minute:'2-digit'});}
 function fmt(h){if(h===0||h===24)return '12 AM';if(h===12)return '12 PM';return h<12?h+' AM':(h-12)+' PM';}
 function currentIdx(){var h=etHour(),idx=0;for(var i=0;i<SCHEDULE.length;i++){if(h>=SCHEDULE[i].start)idx=i;}return idx;}
-function play(i,scroll){
- var s=SCHEDULE[i];
- document.getElementById('player').src='https://www.youtube-nocookie.com/embed/'+s.id+'?rel=0';
- document.getElementById('nowTitle').textContent=s.show;
- document.getElementById('nowSub').textContent=s.ep;
- var n=SCHEDULE[(i+1)%SCHEDULE.length];
- document.getElementById('nextLine').textContent='Up next at '+fmt(n.start)+' ET: '+n.show+' — '+n.ep;
- var slots=document.querySelectorAll('.slot');slots.forEach(function(el,j){el.classList.toggle('on',j===i);});
- if(scroll)window.scrollTo({top:0,behavior:'smooth'});
+function setPlayer(id,title,sub){
+ document.getElementById('player').src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
+ document.getElementById('nowTitle').textContent=title;
+ document.getElementById('nowSub').textContent=sub;
+}
+function playSchedule(i){
+ var s=SCHEDULE[i], n=SCHEDULE[(i+1)%SCHEDULE.length];
+ setPlayer(s.id,s.show,s.ep);
+ var now=etNow(), startH=s.start, endH=(i+1<SCHEDULE.length)?SCHEDULE[i+1].start:24;
+ var total=(endH-startH)*60, elapsed=(now.getHours()-startH)*60+now.getMinutes();
+ var pct=Math.max(2,Math.min(100,Math.round(elapsed/total*100)));
+ document.getElementById('prog').style.width=pct+'%';
+ var minsLeft=total-elapsed;
+ document.getElementById('nextLine').textContent='Up next in ~'+minsLeft+' min · '+fmt(n.start)+' ET: '+n.show+' — '+n.ep;
+ document.querySelectorAll('.slot').forEach(function(el,j){el.classList.toggle('on',j===i);var a=el.querySelector('.air');if(a)a.textContent=(j===i)?'● ON AIR':'';});
+ document.querySelectorAll('#epsAI .chip,#epsKids .chip').forEach(function(c){c.classList.remove('on');});
+}
+function playEp(e,btn){
+ setPlayer(e.id,e.t,e.s);
+ document.getElementById('prog').style.width='100%';
+ document.getElementById('nextLine').textContent='You picked this one — tap a lineup slot anytime to jump back to the live schedule.';
+ document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});
+ if(btn)btn.classList.add('on');
+ window.scrollTo({top:document.querySelector('.livehead').offsetTop-70,behavior:'smooth'});
+}
+function buildChips(elId,list){
+ var box=document.getElementById(elId);
+ list.forEach(function(e){var b=document.createElement('button');b.className='chip';b.innerHTML=e.t+'<small>'+e.s+'</small>';b.onclick=function(){playEp(e,b);};box.appendChild(b);});
 }
 var guide=document.getElementById('guide');
 SCHEDULE.forEach(function(s,i){
  var end=(i+1<SCHEDULE.length)?SCHEDULE[i+1].start:24;
  var b=document.createElement('button');b.className='slot';
- b.innerHTML='<div class="t">'+fmt(s.start)+' – '+fmt(end)+' ET</div><div class="s">'+s.show+'</div><div class="e">'+s.ep+'</div>';
- b.onclick=function(){play(i,true);};
+ b.innerHTML='<div class="t">'+fmt(s.start)+' – '+fmt(end)+'</div><div><div class="s">'+s.show+'</div><div class="e">'+s.ep+'</div></div><div class="air"></div>';
+ b.onclick=function(){showScreen('watch');playSchedule(i);window.scrollTo({top:0,behavior:'smooth'});};
  guide.appendChild(b);
 });
-document.getElementById('clock').textContent=etClock()+' ET';
-play(currentIdx(),false);
-setInterval(function(){document.getElementById('clock').textContent=etClock()+' ET';play(currentIdx(),false);},60000);
+buildChips('epsAI',EPS_AI); buildChips('epsKids',EPS_KIDS);
+function showScreen(name){
+ document.querySelectorAll('.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.s===name);});
+ document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('on',s.id==='s-'+name);});
+}
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){showScreen(b.dataset.s);};});
+function tick(){document.getElementById('clock').textContent=etClock()+' ET';}
+tick(); playSchedule(currentIdx());
+setInterval(function(){tick();},30000);
 </script>
 </body>
 </html>
